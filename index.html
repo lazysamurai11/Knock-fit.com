@@ -1,0 +1,2030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KnockFit - Home Personal Fitness Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.0/dist/vanilla-tilt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
+<script>
+tailwind.config={
+theme:{
+extend:{
+colors:{
+primary:'#000000',
+secondary:'#ffffff',
+accent: '#ff3e00'
+},
+borderRadius:{
+'none':'0px',
+'sm':'4px',
+DEFAULT:'8px',
+'md':'12px',
+'lg':'16px',
+'xl':'20px',
+'2xl':'24px',
+'3xl':'32px',
+'full':'9999px',
+'button':'8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Montserrat', sans-serif;
+background-color: #ffffff;
+color: #1a1a1a;
+overflow-x: hidden;
+}
+.hero-section {
+position: relative;
+overflow: hidden;
+}
+.hero-section::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, #ffffff 0%, #ffffff 40%, transparent 100%);
+z-index: 1;
+}
+.hero-content {
+position: relative;
+z-index: 2;
+}
+
+/* Enhanced Animations */
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translate3d(0, 40px, 0);
+}
+to {
+opacity: 1;
+transform: translate3d(0, 0, 0);
+}
+}
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+@keyframes fadeInLeft {
+from {
+opacity: 0;
+transform: translate3d(-40px, 0, 0);
+}
+to {
+opacity: 1;
+transform: translate3d(0, 0, 0);
+}
+}
+@keyframes fadeInRight {
+from {
+opacity: 0;
+transform: translate3d(40px, 0, 0);
+}
+to {
+opacity: 1;
+transform: translate3d(0, 0, 0);
+}
+}
+@keyframes zoomIn {
+from {
+opacity: 0;
+transform: scale3d(0.9, 0.9, 0.9);
+}
+to {
+opacity: 1;
+transform: scale3d(1, 1, 1);
+}
+}
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+40% {transform: translateY(-20px);}
+60% {transform: translateY(-10px);}
+}
+@keyframes pulse {
+0% {transform: scale(1);}
+50% {transform: scale(1.05);}
+100% {transform: scale(1);}
+}
+@keyframes float {
+0% {transform: translateY(0px);}
+50% {transform: translateY(-10px);}
+100% {transform: translateY(0px);}
+}
+
+.animate-fadeInUp {animation: fadeInUp 0.6s ease-out forwards;}
+.animate-fadeIn {animation: fadeIn 0.6s ease-out forwards;}
+.animate-fadeInLeft {animation: fadeInLeft 0.6s ease-out forwards;}
+.animate-fadeInRight {animation: fadeInRight 0.6s ease-out forwards;}
+.animate-zoomIn {animation: zoomIn 0.6s ease-out forwards;}
+.animate-bounce {animation: bounce 2s ease infinite;}
+.animate-pulse {animation: pulse 2s ease-in-out infinite;}
+.animate-float {animation: float 3s ease-in-out infinite;}
+
+.animate-delay-1 {animation-delay: 0.2s;}
+.animate-delay-2 {animation-delay: 0.4s;}
+.animate-delay-3 {animation-delay: 0.6s;}
+.animate-delay-4 {animation-delay: 0.8s;}
+.animate-delay-5 {animation-delay: 1s;}
+
+.custom-shadow {
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+transition: all 0.3s ease;
+}
+.grow-shadow:hover {
+transform: translateY(-5px) scale(1.02);
+box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+.hover-scale {
+transition: transform 0.3s ease;
+}
+.hover-scale:hover {
+transform: scale(1.03);
+}
+
+.plan-card {
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.plan-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+input:focus, textarea:focus {
+outline: none;
+border-color: #000000;
+}
+.trainer-card {
+transition: all 0.4s ease;
+overflow: hidden;
+}
+.trainer-card:hover {
+transform: translateY(-5px);
+}
+.trainer-card:hover img,
+.trainer-card:hover .trainer-icon {
+transform: scale(1.08);
+}
+.trainer-card img,
+.trainer-icon {
+transition: transform 0.5s ease;
+}
+
+/* Magnetic Button Effect */
+.magnetic-button {
+position: relative;
+transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Glowing Effect */
+.glow-on-hover {
+position: relative;
+overflow: hidden;
+}
+.glow-on-hover::before {
+content: '';
+background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+position: absolute;
+top: -2px;
+left: -2px;
+background-size: 400%;
+z-index: -1;
+filter: blur(5px);
+width: calc(100% + 4px);
+height: calc(100% + 4px);
+animation: glowing 20s linear infinite;
+opacity: 0;
+transition: opacity 0.3s ease-in-out;
+border-radius: 10px;
+}
+.glow-on-hover:hover::before {
+opacity: 1;
+}
+@keyframes glowing {
+0% { background-position: 0 0; }
+50% { background-position: 400% 0; }
+100% { background-position: 0 0; }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+position: fixed;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: rgba(0, 0, 0, 0.5);
+pointer-events: none;
+transform: translate(-50%, -50%);
+z-index: 9999;
+mix-blend-mode: difference;
+transition: width 0.3s, height 0.3s, background 0.3s;
+}
+
+/* Mobile Menu Animation */
+.hamburger {
+cursor: pointer;
+transition: all 0.3s;
+}
+.hamburger-line {
+display: block;
+width: 24px;
+height: 2px;
+background: #000000;
+margin: 5px 0;
+transition: all 0.3s;
+}
+.hamburger.active .hamburger-line:nth-child(1) {
+transform: translateY(7px) rotate(45deg);
+}
+.hamburger.active .hamburger-line:nth-child(2) {
+opacity: 0;
+}
+.hamburger.active .hamburger-line:nth-child(3) {
+transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+position: fixed;
+top: 0;
+right: -100%;
+width: 80%;
+height: 100vh;
+background: #ffffff;
+z-index: 100;
+transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+padding: 80px 20px 20px;
+box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+.mobile-menu.active {
+right: 0;
+}
+.mobile-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+z-index: 99;
+opacity: 0;
+visibility: hidden;
+transition: all 0.5s;
+}
+.mobile-overlay.active {
+opacity: 1;
+visibility: visible;
+}
+
+/* Counter Animation */
+.counter-value {
+transition: all 0.5s ease;
+}
+
+/* Smooth Scroll */
+html.has-scroll-smooth {
+overflow: hidden;
+}
+.has-scroll-smooth body {
+overflow: hidden;
+}
+.has-scroll-smooth [data-scroll-container] {
+min-height: 100vh;
+}
+
+/* FAQ Animation */
+.faq-content {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.5s ease-out;
+}
+.faq-content.active {
+max-height: 500px;
+}
+
+/* Testimonial Slider */
+.swiper-container {
+width: 100%;
+padding-top: 50px;
+padding-bottom: 50px;
+}
+.swiper-slide {
+background-position: center;
+background-size: cover;
+width: 300px;
+height: 400px;
+}
+
+/* Animated Background */
+.bg-animated {
+background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+background-size: 400% 400%;
+animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+0% {background-position: 0% 50%;}
+50% {background-position: 100% 50%;}
+100% {background-position: 0% 50%;}
+}
+
+/* Ripple Effect */
+.ripple {
+position: relative;
+overflow: hidden;
+}
+.ripple:after {
+content: "";
+display: block;
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+pointer-events: none;
+background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+background-repeat: no-repeat;
+background-position: 50%;
+transform: scale(10, 10);
+opacity: 0;
+transition: transform .5s, opacity 1s;
+}
+.ripple:active:after {
+transform: scale(0, 0);
+opacity: .3;
+transition: 0s;
+}
+
+/* Split Text Animation */
+.split-text {
+opacity: 0;
+}
+.split-text .letter {
+display: inline-block;
+transform: translateY(100%);
+opacity: 0;
+transition: transform 0.6s, opacity 0.6s;
+}
+.split-text.reveal .letter {
+transform: translateY(0);
+opacity: 1;
+}
+
+/* Progress Bar */
+.progress-bar {
+position: fixed;
+top: 0;
+left: 0;
+width: 0%;
+height: 3px;
+background: linear-gradient(to right, #000000, #ff3e00);
+z-index: 9999;
+transition: width 0.3s ease;
+}
+</style>
+</head>
+<body class="min-h-screen" data-scroll-container>
+<!-- Progress Bar -->
+<div class="progress-bar"></div>
+
+<!-- Custom Cursor -->
+<div class="custom-cursor hidden md:block"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-overlay"></div>
+<div class="mobile-menu">
+    <div class="flex flex-col h-full">
+        <div class="flex items-center justify-between mb-8">
+            <a href="#" class="text-3xl font-['Pacifico'] text-primary">KnockFit</a>
+            <button class="close-mobile-menu">
+                <i class="ri-close-line ri-2x"></i>
+            </button>
+        </div>
+        <div class="flex flex-col space-y-6">
+            <a href="#home" class="text-gray-800 hover:text-primary font-medium transition-colors text-xl">Home</a>
+            <a href="#services" class="text-gray-800 hover:text-primary font-medium transition-colors text-xl">Services</a>
+            <a href="#trainers" class="text-gray-800 hover:text-primary font-medium transition-colors text-xl">Trainers</a>
+            <a href="#pricing" class="text-gray-800 hover:text-primary font-medium transition-colors text-xl">Pricing</a>
+            <a href="#contact" class="text-gray-800 hover:text-primary font-medium transition-colors text-xl">Contact</a>
+        </div>
+        <div class="mt-auto">
+            <a href="#free-session" class="block bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-gray-900 transition-colors whitespace-nowrap text-center">Book Free Session</a>
+            <div class="flex justify-center space-x-4 mt-8">
+                <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-colors">
+                    <i class="ri-instagram-line ri-lg"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-colors">
+                    <i class="ri-facebook-line ri-lg"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-primary hover:text-white transition-colors">
+                    <i class="ri-twitter-x-line ri-lg"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav class="bg-white py-4 px-6 fixed w-full z-50 shadow-sm" data-scroll data-scroll-sticky data-scroll-target="body">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="#" class="text-3xl font-['Pacifico'] text-primary hover:scale-105 transition-transform">KnockFit</a>
+    <div class="hidden md:flex space-x-8 items-center">
+        <a href="#home" class="text-gray-800 hover:text-primary font-medium transition-colors nav-link relative">
+            <span class="nav-text">Home</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="#services" class="text-gray-800 hover:text-primary font-medium transition-colors nav-link relative">
+            <span class="nav-text">Services</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="#trainers" class="text-gray-800 hover:text-primary font-medium transition-colors nav-link relative">
+            <span class="nav-text">Trainers</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="#pricing" class="text-gray-800 hover:text-primary font-medium transition-colors nav-link relative">
+            <span class="nav-text">Pricing</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <a href="#contact" class="text-gray-800 hover:text-primary font-medium transition-colors nav-link relative">
+            <span class="nav-text">Contact</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300"></span>
+        </a>
+        <div class="flex items-center space-x-4 ml-4">
+            <a href="#" class="w-8 h-8 flex items-center justify-center text-gray-700 hover:text-primary transition-colors hover:scale-125 transform duration-300">
+                <i class="ri-instagram-line ri-lg"></i>
+            </a>
+            <a href="#" class="w-8 h-8 flex items-center justify-center text-gray-700 hover:text-primary transition-colors hover:scale-125 transform duration-300">
+                <i class="ri-facebook-line ri-lg"></i>
+            </a>
+            <a href="#" class="w-8 h-8 flex items-center justify-center text-gray-700 hover:text-primary transition-colors hover:scale-125 transform duration-300">
+                <i class="ri-twitter-x-line ri-lg"></i>
+            </a>
+        </div>
+        <a href="#free-session" class="bg-primary text-white px-6 py-2 !rounded-button font-medium hover:bg-gray-900 transition-colors whitespace-nowrap magnetic-button ripple">Book Free Session</a>
+    </div>
+    <button class="md:hidden hamburger" aria-label="Main Menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-section min-h-screen pt-24 flex items-center w-full" data-scroll-section>
+<video class="absolute top-0 right-0 w-[60%] h-full object-cover" autoplay loop muted playsinline poster="https://readdy.ai/api/search-image?query=Professional%20fitness%20trainer%20helping%20client%20with%20workout%20in%20modern%20home%20setting%2C%20high-end%20fitness%20equipment%2C%20natural%20lighting%2C%20luxurious%20interior&width=1280&height=720&seq=1&orientation=landscape">
+<source src="https://public.readdy.ai/gen_page/fitness_training.mp4" type="video/mp4">
+<source src="https://public.readdy.ai/gen_page/fitness_training.webm" type="video/webm">
+<img src="https://readdy.ai/api/search-image?query=Professional%20fitness%20trainer%20helping%20client%20with%20workout%20in%20modern%20home%20setting%2C%20high-end%20fitness%20equipment%2C%20natural%20lighting%2C%20luxurious%20interior&width=1280&height=720&seq=1&orientation=landscape" alt="Fitness Training" class="w-full h-full object-cover">
+</video>
+<div class="max-w-7xl mx-auto px-6 w-full">
+    <div class="w-full md:w-1/2 py-20 hero-content opacity-0 animate-fadeIn" data-scroll data-scroll-speed="2">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight split-text">No Commute <br>Just Commit</h1>
+        <p class="text-xl md:text-2xl mb-8 text-gray-700 max-w-lg reveal-text" data-scroll data-scroll-delay="0.2">Premium personal fitness training in the comfort of your home. Achieve your fitness goals without stepping outside.</p>
+        <div class="flex flex-col sm:flex-row gap-4" data-scroll data-scroll-delay="0.4">
+            <a href="#free-session" class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-gray-900 transition-colors whitespace-nowrap text-center ripple glow-on-hover">Book Free Session</a>
+            <a href="#trainers" class="bg-white border-2 border-primary text-primary px-8 py-3 !rounded-button font-medium hover:bg-gray-100 transition-colors whitespace-nowrap text-center hover-scale">Meet Our Trainers</a>
+        </div>
+        
+        <!-- Animated Stats -->
+        
+    </div>
+</div>
+<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <a href="#services" class="text-3xl text-primary">
+        <i class="ri-arrow-down-line"></i>
+    </a>
+</div>
+</section>
+
+<!-- Benefits Section -->
+<section id="services" class="py-20 bg-gray-50" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-scroll data-scroll-speed="1">
+        <span class="inline-block px-4 py-1 bg-gray-200 !rounded-full text-primary font-medium mb-4">WHY CHOOSE US</span>
+        <h2 class="text-4xl font-bold mb-4">Why Choose KnockFit?</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">We bring professional fitness training to your doorstep, saving you time and providing personalized workouts in your comfort zone.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg custom-shadow transition-all duration-500 hover:-translate-y-5 hover:shadow-xl transform-gpu" data-scroll data-scroll-offset="100">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 animate-pulse">
+                <i class="ri-home-heart-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Home Convenience</h3>
+            <p class="text-gray-600">No more commuting to the gym. Our certified trainers come to your home with all the necessary equipment.</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg custom-shadow transition-all duration-500 hover:-translate-y-5 hover:shadow-xl transform-gpu" data-scroll data-scroll-offset="100" data-scroll-delay="0.1">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 animate-pulse">
+                <i class="ri-user-star-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Expert Trainers</h3>
+            <p class="text-gray-600">Our trainers are certified professionals with years of experience in personalized fitness coaching.</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg custom-shadow transition-all duration-500 hover:-translate-y-5 hover:shadow-xl transform-gpu" data-scroll data-scroll-offset="100" data-scroll-delay="0.2">
+            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 animate-pulse">
+                <i class="ri-calendar-check-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="text-2xl font-bold mb-3">Flexible Scheduling</h3>
+            <p class="text-gray-600">Book sessions at times that work for you. Early mornings, evenings, or weekends - we adapt to your schedule.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- How It Works -->
+<section class="py-20 bg-gray-900" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-scroll data-scroll-speed="1">
+        <span class="inline-block px-4 py-1 bg-gray-800 !rounded-full text-white font-medium mb-4">OUR PROCESS</span>
+        <h2 class="text-4xl font-bold mb-4 text-white">How It Works</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Getting started with KnockFit is simple and straightforward.</p>
+    </div>
+    <div class="grid md:grid-cols-4 gap-8">
+        <div class="text-center" data-scroll data-scroll-offset="100">
+            <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto text-white text-2xl font-bold transform-gpu hover:scale-110 transition-transform">1</div>
+            <h3 class="text-xl font-bold mb-3 text-white">Book a Free Session</h3>
+            <p class="text-gray-400">Try our service with no commitment. Experience how home training works.</p>
+            <!-- Animated Arrow -->
+            <div class="hidden md:block mt-8">
+                <i class="ri-arrow-right-line text-3xl text-primary animate-pulse"></i>
+            </div>
+        </div>
+        <div class="text-center" data-scroll data-scroll-offset="100" data-scroll-delay="0.1">
+            <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto text-white text-2xl font-bold transform-gpu hover:scale-110 transition-transform">2</div>
+            <h3 class="text-xl font-bold mb-3 text-white">Meet Your Trainer</h3>
+            <p class="text-gray-400">Get matched with a certified trainer who specializes in your fitness goals.</p>
+            <!-- Animated Arrow -->
+            <div class="hidden md:block mt-8">
+                <i class="ri-arrow-right-line text-3xl text-primary animate-pulse"></i>
+            </div>
+        </div>
+        <div class="text-center" data-scroll data-scroll-offset="100" data-scroll-delay="0.2">
+            <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto text-white text-2xl font-bold transform-gpu hover:scale-110 transition-transform">3</div>
+            <h3 class="text-xl font-bold mb-3 text-white">Choose Your Plan</h3>
+            <p class="text-gray-400">Select a subscription plan that fits your schedule and budget.</p>
+            <!-- Animated Arrow -->
+            <div class="hidden md:block mt-8">
+                <i class="ri-arrow-right-line text-3xl text-primary animate-pulse"></i>
+            </div>
+        </div>
+        <div class="text-center" data-scroll data-scroll-offset="100" data-scroll-delay="0.3">
+            <div class="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-6 mx-auto text-white text-2xl font-bold transform-gpu hover:scale-110 transition-transform">4</div>
+            <h3 class="text-xl font-bold mb-3 text-white">Start Your Journey</h3>
+            <p class="text-gray-400">Begin your personalized fitness program in the comfort of your home.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Features Section - New -->
+<section class="py-20 bg-white" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-scroll data-scroll-speed="1">
+        <span class="inline-block px-4 py-1 bg-gray-200 !rounded-full text-primary font-medium mb-4">FEATURES</span>
+        <h2 class="text-4xl font-bold mb-4">Premium Features</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Discover the KnockFit difference with our premium home fitness offerings.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="flex bg-gray-50 rounded-lg overflow-hidden transform-gpu hover:scale-[1.02] transition-transform" data-scroll data-scroll-offset="100">
+            <div class="w-20 bg-primary flex-shrink-0 flex items-center justify-center">
+                <i class="ri-calendar-check-line ri-2x text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Personalized Training Schedule</h3>
+                <p class="text-gray-600">Sessions tailored to your availability and lifestyle. We work around your schedule, not the other way around.</p>
+            </div>
+        </div>
+        
+        <div class="flex bg-gray-50 rounded-lg overflow-hidden transform-gpu hover:scale-[1.02] transition-transform" data-scroll data-scroll-offset="100" data-scroll-delay="0.1">
+            <div class="w-20 bg-primary flex-shrink-0 flex items-center justify-center">
+                <i class="ri-heart-pulse-line ri-2x text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Health Assessment</h3>
+                <p class="text-gray-600">Comprehensive fitness evaluation to establish your baseline and track progress effectively.</p>
+            </div>
+        </div>
+        
+        <div class="flex bg-gray-50 rounded-lg overflow-hidden transform-gpu hover:scale-[1.02] transition-transform" data-scroll data-scroll-offset="100" data-scroll-delay="0.2">
+            <div class="w-20 bg-primary flex-shrink-0 flex items-center justify-center">
+                <i class="ri-restaurant-line ri-2x text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Nutrition Guidance</h3>
+                <p class="text-gray-600">Expert advice on diet and nutrition to complement your fitness regimen for optimal results.</p>
+            </div>
+        </div>
+        
+        <div class="flex bg-gray-50 rounded-lg overflow-hidden transform-gpu hover:scale-[1.02] transition-transform" data-scroll data-scroll-offset="100" data-scroll-delay="0.3">
+            <div class="w-20 bg-primary flex-shrink-0 flex items-center justify-center">
+                <i class="ri-smartphone-line ri-2x text-white"></i>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Mobile App Access</h3>
+                <p class="text-gray-600">Track your progress, schedule sessions, and access workout plans through our dedicated mobile app.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Result Stats -->
+    
+</div>
+</section>
+
+<!-- Trainers Section -->
+<section id="trainers" class="py-20 bg-gray-50" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-scroll data-scroll-speed="1">
+        <span class="inline-block px-4 py-1 bg-gray-200 !rounded-full text-primary font-medium mb-4">OUR TEAM</span>
+        <h2 class="text-4xl font-bold mb-4">Meet Our Expert Trainers</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Our certified fitness professionals are passionate about helping you achieve your goals.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="trainer-card bg-white rounded-lg overflow-hidden custom-shadow" data-tilt data-tilt-max="5" data-scroll data-scroll-offset="100">
+            <div class="p-8 relative overflow-hidden group">
+                <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 trainer-icon">
+                    <i class="ri-user-line ri-2x text-primary"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-1 text-center">Rajat Dhingra</h3>
+                <p class="text-primary mb-3 text-center">Strength & Conditioning Specialist</p>
+                <p class="text-gray-600 mb-4 relative z-10">Specializes in strength training, weight management, and athletic performance. 8+ years of experience.</p>
+                <div class="flex space-x-3 justify-center">
+                    <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-700 hover:bg-primary hover:text-white transition-colors transform hover:scale-110">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-700 hover:bg-primary hover:text-white transition-colors transform hover:scale-110">
+                        <i class="ri-linkedin-line"></i>
+                    </a>
+                </div>
+                <!-- Hidden Bio that appears on hover -->
+                <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent p-6 flex flex-col justify-end translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                        <h4 class="font-bold mb-2">Specialization</h4>
+                        <ul class="list-disc list-inside mb-2">
+                            <li>Strength Training</li>
+                            <li>Weight Management</li>
+                            <li>Athletic Performance</li>
+                        </ul>
+                        <a href="#free-session" class="inline-block px-4 py-2 bg-white text-primary rounded-button mt-2">Train with Rajat</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="trainer-card bg-white rounded-lg overflow-hidden custom-shadow" data-tilt data-tilt-max="5" data-scroll data-scroll-offset="100" data-scroll-delay="0.1">
+            <div class="p-8 relative overflow-hidden group">
+                <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 trainer-icon">
+                    <i class="ri-user-line ri-2x text-primary"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-1 text-center">Simran</h3>
+                <p class="text-primary mb-3 text-center">Yoga & Pilates Instructor</p>
+                <p class="text-gray-600 mb-4 relative z-10">Expert in flexibility, core strength, and mindful movement. Specializes in stress reduction and mobility.</p>
+                <div class="flex space-x-3 justify-center">
+                    <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-700 hover:bg-primary hover:text-white transition-colors transform hover:scale-110">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-700 hover:bg-primary hover:text-white transition-colors transform hover:scale-110">
+                        <i class="ri-linkedin-line"></i>
+                    </a>
+                </div>
+                <!-- Hidden Bio that appears on hover -->
+                <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent p-6 flex flex-col justify-end translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                        <h4 class="font-bold mb-2">Specialization</h4>
+                        <ul class="list-disc list-inside mb-2">
+                            <li>Yoga & Pilates</li>
+                            <li>Stress Reduction</li>
+                            <li>Mobility Training</li>
+                        </ul>
+                        <a href="#free-session" class="inline-block px-4 py-2 bg-white text-primary rounded-button mt-2">Train with Simran</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="trainer-card bg-white rounded-lg overflow-hidden custom-shadow" data-tilt data-tilt-max="5" data-scroll data-scroll-offset="100" data-scroll-delay="0.2">
+            <div class="p-8 relative overflow-hidden group">
+                <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 trainer-icon">
+                    <i class="ri-user-line ri-2x text-primary"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-1 text-center">Mridul</h3>
+                <p class="text-primary mb-3 text-center">HIIT & Functional Training Expert</p>
+                <p class="text-gray-600 mb-4 relative z-10">Specializes in high-intensity workouts, body transformation, and sports-specific training programs.</p>
+                <div class="flex space-x-3 justify-center">
+                    <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-700 hover:bg-primary hover:text-white transition-colors transform hover:scale-110">
+                        <i class="ri-instagram-line"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-full text-gray-700 hover:bg-primary hover:text-white transition-colors transform hover:scale-110">
+                        <i class="ri-linkedin-line"></i>
+                    </a>
+                </div>
+                <!-- Hidden Bio that appears on hover -->
+                <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent p-6 flex flex-col justify-end translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <div class="text-white">
+                        <h4 class="font-bold mb-2">Specialization</h4>
+                        <ul class="list-disc list-inside mb-2">
+                            <li>HIIT Training</li>
+                            <li>Body Transformation</li>
+                            <li>Sports Training</li>
+                        </ul>
+                        <a href="#free-session" class="inline-block px-4 py-2 bg-white text-primary rounded-button mt-2">Train with Mridul</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center mt-12" data-scroll>
+        <a href="#" class="inline-flex items-center text-primary font-medium hover:underline group">
+            View All Trainers
+            <i class="ri-arrow-right-line ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+        </a>
+    </div>
+</div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="py-20 bg-gray-900" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-scroll data-scroll-speed="1">
+        <span class="inline-block px-4 py-1 bg-gray-800 !rounded-full text-white font-medium mb-4">PRICING</span>
+        <h2 class="text-4xl font-bold mb-4 text-white">Flexible Pricing Plans</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Choose a plan that works for you with increasing discounts for longer commitments.</p>
+    </div>
+    
+    <div id="monthly-plans" class="grid md:grid-cols-4 gap-8 plan-container">
+        <div class="plan-card bg-gray-800 p-8 rounded-lg custom-shadow transition-all duration-300 border border-gray-700" data-scroll data-scroll-offset="100">
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-2 text-white">Monthly</h3>
+                <p class="text-gray-400">Flexible monthly plan</p>
+            </div>
+            <div class="mb-6">
+                <span class="text-5xl font-bold text-white">₹12,000</span>
+                <span class="text-gray-400">/month</span>
+            </div>
+            <ul class="mb-8 space-y-3">
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">12 sessions per month</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">Personalized workout plan</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">Nutrition guidance</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">Progress tracking</span>
+                </li>
+            </ul>
+            <a href="#" class="block w-full bg-primary text-white text-center py-3 !rounded-button font-medium hover:bg-gray-700 transition-colors whitespace-nowrap ripple">Get Started</a>
+        </div>
+        <div class="plan-card bg-gray-800 p-8 rounded-lg custom-shadow transition-all duration-300 border border-gray-700" data-scroll data-scroll-offset="100" data-scroll-delay="0.1">
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-2 text-white">3 Months</h3>
+                <p class="text-gray-400">Save 10%</p>
+            </div>
+            <div class="mb-6">
+                <span class="text-5xl font-bold text-white">₹10,800</span>
+                <span class="text-gray-400">/month</span>
+            </div>
+            <ul class="mb-8 space-y-3">
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">12 sessions per month</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">Personalized workout plan</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">Nutrition guidance</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">Progress tracking</span>
+                </li>
+            </ul>
+            <a href="#" class="block w-full bg-primary text-white text-center py-3 !rounded-button font-medium hover:bg-gray-700 transition-colors whitespace-nowrap ripple">Get Started</a>
+        </div>
+        <div class="plan-card bg-white p-8 rounded-lg custom-shadow transition-all duration-300 relative popular-plan" data-scroll data-scroll-offset="100" data-scroll-delay="0.2">
+            <div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 rounded-bl-lg rounded-tr-lg font-medium text-sm animate-pulse">POPULAR</div>
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-2">6 Months</h3>
+                <p class="text-gray-600">Save 15%</p>
+            </div>
+            <div class="mb-6">
+                <span class="text-5xl font-bold">₹10,200</span>
+                <span class="text-gray-400">/month</span>
+            </div>
+            <ul class="mb-8 space-y-3">
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span>12 sessions per month</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span>Personalized workout plan</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span>Nutrition guidance</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span>Progress tracking</span>
+                </li>
+            </ul>
+            <a href="#" class="block w-full bg-primary text-white text-center py-3 !rounded-button font-medium hover:bg-gray-900 transition-colors whitespace-nowrap glow-on-hover ripple">Get Started</a>
+        </div>
+        <div class="plan-card bg-gray-800 p-8 rounded-lg custom-shadow transition-all duration-300 border border-gray-700" data-scroll data-scroll-offset="100" data-scroll-delay="0.3">
+            <div class="mb-6">
+                <h3 class="text-2xl font-bold mb-2 text-white">Yearly</h3>
+                <p class="text-gray-400">Save 20%</p>
+            </div>
+            <div class="mb-6">
+                <span class="text-5xl font-bold text-white">₹9,600</span>
+                <span class="text-gray-400">/month</span>
+            </div>
+            <ul class="mb-8 space-y-3">
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">12 sessions per month</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">Personalized workout plan</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">Nutrition guidance</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="ri-check-line text-primary ri-lg mt-1 mr-3"></i>
+                    <span class="text-gray-300">Progress tracking</span>
+                </li>
+            </ul>
+            <a href="#" class="block w-full bg-primary text-white text-center py-3 !rounded-button font-medium hover:bg-gray-700 transition-colors whitespace-nowrap ripple">Get Started</a>
+        </div>
+    </div>
+
+    <div id="quarterly-plans" class="grid md:grid-cols-4 gap-8 hidden plan-container">
+        <!-- Similar structure but with quarterly pricing -->
+    </div>
+
+    <div id="biannual-plans" class="grid md:grid-cols-4 gap-8 hidden plan-container">
+        <!-- Similar structure but with biannual pricing -->
+    </div>
+
+    <div id="annual-plans" class="grid md:grid-cols-4 gap-8 hidden plan-container">
+        <!-- Similar structure but with annual pricing -->
+    </div>
+    
+    <!-- Money-Back Guarantee -->
+    <div class="text-center mt-12" data-scroll>
+        <div class="inline-flex items-center bg-gray-800 px-6 py-3 rounded-full">
+            <i class="ri-shield-check-line ri-lg text-primary mr-2"></i>
+            <span class="text-white">100% Satisfaction Guarantee. 7-day money-back policy.</span>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-20 bg-white" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-scroll data-scroll-speed="1">
+        <span class="inline-block px-4 py-1 bg-gray-200 !rounded-full text-primary font-medium mb-4">TESTIMONIALS</span>
+        <h2 class="text-4xl font-bold mb-4">What Our Clients Say</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Real results from real people who chose KnockFit for their fitness journey.</p>
+    </div>
+    
+    <!-- Testimonial Swiper -->
+    <div class="swiper-container testimonial-swiper" data-scroll>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="bg-gray-50 p-8 rounded-lg h-full shadow-lg">
+                    <div class="flex mb-6">
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"KnockFit has completely transformed my fitness routine. Having a trainer come to my home has eliminated all my excuses. I've lost 15 pounds in just 3 months!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full mr-4 flex items-center justify-center text-white">
+                            <i class="ri-user-line ri-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Rebecca Thompson</h4>
+                            <p class="text-gray-500 text-sm">Premium Member - 6 months</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="bg-gray-50 p-8 rounded-lg h-full shadow-lg">
+                    <div class="flex mb-6">
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"As a busy executive, I never had time for the gym. KnockFit's home training has been a game-changer. My trainer works around my schedule, and the results speak for themselves."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full mr-4 flex items-center justify-center text-white">
+                            <i class="ri-user-line ri-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">James Wilson</h4>
+                            <p class="text-gray-500 text-sm">Elite Member - 1 year</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="bg-gray-50 p-8 rounded-lg h-full shadow-lg">
+                    <div class="flex mb-6">
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"I was hesitant about home training, but KnockFit proved me wrong. The trainers are professional, the workouts are challenging, and I love the privacy of training at home."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full mr-4 flex items-center justify-center text-white">
+                            <i class="ri-user-line ri-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Sophia Martinez</h4>
+                            <p class="text-gray-500 text-sm">Basic Member - 3 months</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="bg-gray-50 p-8 rounded-lg h-full shadow-lg">
+                    <div class="flex mb-6">
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                        <i class="ri-star-fill text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6 italic">"After trying many fitness programs, KnockFit is the only one that's helped me stay consistent. The convenience of at-home training with professional guidance is unmatched."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-primary rounded-full mr-4 flex items-center justify-center text-white">
+                            <i class="ri-user-line ri-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Daniel Lee</h4>
+                            <p class="text-gray-500 text-sm">Premium Member - 8 months</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination mt-8"></div>
+    </div>
+    
+    <!-- Results & Transformation -->
+    <div class="mt-20 bg-gray-100 rounded-2xl overflow-hidden" data-scroll>
+        <div class="grid md:grid-cols-2 items-center">
+            <div class="p-12">
+                <h3 class="text-3xl font-bold mb-4">Real Transformations</h3>
+                <p class="text-gray-700 mb-6">Our clients achieve remarkable results with dedication and our expert guidance.</p>
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium">Weight Loss Success</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="w-full bg-gray-300 h-2 rounded-full">
+                        <div class="progress-animate bg-primary h-2 rounded-full" style="width: 0%; transition: width 1.5s ease;" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium">Strength Improvement</span>
+                        <span>92%</span>
+                    </div>
+                    <div class="w-full bg-gray-300 h-2 rounded-full">
+                        <div class="progress-animate bg-primary h-2 rounded-full" style="width: 0%; transition: width 1.5s ease;" data-width="92%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="font-medium">Overall Satisfaction</span>
+                        <span>98%</span>
+                    </div>
+                    <div class="w-full bg-gray-300 h-2 rounded-full">
+                        <div class="progress-animate bg-primary h-2 rounded-full" style="width: 0%; transition: width 1.5s ease;" data-width="98%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-12 h-full">
+                <div class="relative overflow-hidden rounded-lg">
+                    <!-- This would be a before/after image slider in a real implementation -->
+                    <div class="bg-gray-700 rounded-lg h-72 flex items-center justify-center">
+                        <p class="text-white text-xl text-center px-8">Before & After Transformation<br>(Image would be here in a real implementation)</p>
+                    </div>
+                    <div class="absolute bottom-4 right-4 bg-primary px-3 py-1 rounded text-white text-sm">
+                        12 Weeks Program
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Free Session CTA -->
+<section id="free-session" class="py-20 bg-animated text-white" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div data-scroll data-scroll-speed="1">
+            <span class="inline-block px-4 py-1 bg-white text-primary !rounded-full font-medium mb-4">GET STARTED</span>
+            <h2 class="text-4xl font-bold mb-4">Try a Free Session Today</h2>
+            <p class="text-xl mb-6">Experience the convenience of home fitness training with a complimentary session. No commitment required.</p>
+            <ul class="mb-8 space-y-3">
+                <li class="flex items-start animate-fadeInLeft animate-delay-1">
+                    <i class="ri-check-line ri-lg mt-1 mr-3"></i>
+                    <span>45-minute personalized workout</span>
+                </li>
+                <li class="flex items-start animate-fadeInLeft animate-delay-2">
+                    <i class="ri-check-line ri-lg mt-1 mr-3"></i>
+                    <span>Fitness assessment and goal setting</span>
+                </li>
+                <li class="flex items-start animate-fadeInLeft animate-delay-3">
+                    <i class="ri-check-line ri-lg mt-1 mr-3"></i>
+                    <span>Meet a certified trainer</span>
+                </li>
+                <li class="flex items-start animate-fadeInLeft animate-delay-4">
+                    <i class="ri-check-line ri-lg mt-1 mr-3"></i>
+                    <span>No pressure or obligation</span>
+                </li>
+            </ul>
+        </div>
+        <div class="bg-white p-8 rounded-lg text-gray-800 shadow-2xl transform-gpu hover:scale-[1.01] transition-transform" data-scroll data-scroll-speed="2">
+            <h3 class="text-2xl font-bold mb-6">Book Your Free Session</h3>
+            <form id="free-session-form">
+                <div class="mb-4 form-group">
+                    <label class="block text-gray-700 mb-2" for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your name">
+                    <div class="text-red-500 text-sm hidden error-message">Please enter your name</div>
+                </div>
+                <div class="mb-4 form-group">
+                    <label class="block text-gray-700 mb-2" for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your email">
+                    <div class="text-red-500 text-sm hidden error-message">Please enter a valid email</div>
+                </div>
+                <div class="mb-4 form-group">
+                    <label class="block text-gray-700 mb-2" for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your phone">
+                    <div class="text-red-500 text-sm hidden error-message">Please enter your phone number</div>
+                </div>
+                <div class="mb-6 form-group">
+                    <label class="block text-gray-700 mb-2" for="goals">Fitness Goals</label>
+                    <select id="goals" name="goals" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary pr-8">
+                        <option value="" selected disabled>Select your primary goal</option>
+                        <option value="weight-loss">Weight Loss</option>
+                        <option value="muscle-gain">Muscle Gain</option>
+                        <option value="endurance">Endurance</option>
+                        <option value="flexibility">Flexibility</option>
+                        <option value="general">General Fitness</option>
+                    </select>
+                    <div class="text-red-500 text-sm hidden error-message">Please select a goal</div>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-3 !rounded-button font-medium hover:bg-gray-900 transition-colors whitespace-nowrap glow-on-hover ripple" id="submit-button">
+                    <span class="submit-text">Schedule My Free Session</span>
+                    <span class="submit-loading hidden">
+                        <svg class="animate-spin h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Processing...
+                    </span>
+                    <span class="submit-done hidden">
+                        <i class="ri-check-line ri-lg"></i>
+                        Scheduled!
+                    </span>
+                </button>
+            </form>
+            
+            <!-- Success Message -->
+            <div class="hidden success-message text-center pt-8 animate-fadeIn">
+                <div class="rounded-full bg-green-100 w-16 h-16 mx-auto flex items-center justify-center mb-4">
+                    <i class="ri-check-line ri-2x text-green-500"></i>
+                </div>
+                <h4 class="text-xl font-bold text-green-600 mb-2">Booking Successful!</h4>
+                <p class="text-gray-600">We'll contact you within 24 hours to confirm your session.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-20 bg-gray-900" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-scroll data-scroll-speed="1">
+        <span class="inline-block px-4 py-1 bg-gray-800 !rounded-full text-white font-medium mb-4">FAQ</span>
+        <h2 class="text-4xl font-bold mb-4 text-white">Frequently Asked Questions</h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto">Find answers to common questions about our home personal training services.</p>
+    </div>
+    <div class="max-w-4xl mx-auto space-y-6">
+        <div class="bg-white p-6 rounded-lg custom-shadow" data-scroll data-scroll-offset="100">
+            <button class="faq-toggle flex justify-between items-center w-full text-left font-bold text-lg">
+                <span>What equipment do I need for home training?</span>
+                <i class="ri-add-line ri-lg faq-icon transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+                <p class="pt-4 text-gray-600">You don't need any specialized equipment to get started. Our trainers bring essential portable equipment to your home. As you progress, we may recommend some basic items like resistance bands or dumbbells, but these are optional and depend on your specific fitness goals.</p>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg custom-shadow" data-scroll data-scroll-offset="100" data-scroll-delay="0.05">
+            <button class="faq-toggle flex justify-between items-center w-full text-left font-bold text-lg">
+                <span>How much space do I need in my home?</span>
+                <i class="ri-add-line ri-lg faq-icon transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+                <p class="pt-4 text-gray-600">You only need a small area approximately 6x6 feet for most workouts. Our trainers are experts at designing effective workouts in limited spaces. We can adapt to your home environment, whether it's a spacious living room or a compact apartment.</p>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg custom-shadow" data-scroll data-scroll-offset="100" data-scroll-delay="0.1">
+            <button class="faq-toggle flex justify-between items-center w-full text-left font-bold text-lg">
+                <span>Can I change my trainer if we're not a good fit?</span>
+                <i class="ri-add-line ri-lg faq-icon transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+                <p class="pt-4 text-gray-600">Absolutely! We understand that personal chemistry is important in a trainer-client relationship. If you feel your current trainer isn't the right match, simply let us know and we'll assign you a different trainer who better suits your preferences and goals.</p>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg custom-shadow" data-scroll data-scroll-offset="100" data-scroll-delay="0.15">
+            <button class="faq-toggle flex justify-between items-center w-full text-left font-bold text-lg">
+                <span>What happens if I need to reschedule a session?</span>
+                <i class="ri-add-line ri-lg faq-icon transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+                <p class="pt-4 text-gray-600">We understand that schedules can change. You can reschedule a session with at least 24 hours notice at no additional cost. For cancellations with less than 24 hours notice, the session may be counted as used, depending on your subscription plan.</p>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg custom-shadow" data-scroll data-scroll-offset="100" data-scroll-delay="0.2">
+            <button class="faq-toggle flex justify-between items-center w-full text-left font-bold text-lg">
+                <span>Are your trainers certified?</span>
+                <i class="ri-add-line ri-lg faq-icon transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+                <p class="pt-4 text-gray-600">Yes, all our trainers are certified professionals with recognized fitness certifications such as NASM, ACE, ACSM, or equivalent. They also undergo our rigorous internal training program and background checks before joining the KnockFit team.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-gray-50" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16" data-scroll data-scroll-speed="1">
+        <span class="inline-block px-4 py-1 bg-gray-200 !rounded-full text-primary font-medium mb-4">CONTACT</span>
+        <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Have questions or need more information? We're here to help you start your fitness journey.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-12">
+        <div data-scroll data-scroll-speed="1">
+            <div class="space-y-6">
+                <div class="flex items-start hover:scale-105 transition-transform">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                        <i class="ri-mail-line text-primary ri-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Email Us</h3>
+                        <p class="text-gray-600">info@knockfit.com</p>
+                        <p class="text-gray-500 text-sm">We'll respond within 24 hours</p>
+                    </div>
+                </div>
+                <div class="flex items-start hover:scale-105 transition-transform">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                        <i class="ri-phone-line text-primary ri-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Call Us</h3>
+                        <p class="text-gray-600">(555) 123-4567</p>
+                        <p class="text-gray-500 text-sm">Mon-Fri: 8am - 8pm</p>
+                    </div>
+                </div>
+                <div class="flex items-start hover:scale-105 transition-transform">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                        <i class="ri-time-line text-primary ri-lg"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-1">Business Hours</h3>
+                        <p class="text-gray-600">Monday - Friday: 8am - 8pm<br>Saturday: 9am - 5pm<br>Sunday: Closed</p>
+                    </div>
+                </div>
+                
+                <div class="pt-8">
+                    <h3 class="font-bold text-lg mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-gray-900 transition-colors transform hover:scale-110">
+                            <i class="ri-instagram-line ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-gray-900 transition-colors transform hover:scale-110">
+                            <i class="ri-facebook-line ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-gray-900 transition-colors transform hover:scale-110">
+                            <i class="ri-twitter-x-line ri-lg"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-gray-900 transition-colors transform hover:scale-110">
+                            <i class="ri-youtube-line ri-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Interactive Map -->
+                <div class="pt-8">
+                    <h3 class="font-bold text-lg mb-4">Our Coverage Areas</h3>
+                    <div class="bg-gray-300 h-64 rounded-lg flex items-center justify-center">
+                        <p class="text-gray-600 text-center">Interactive map would be here<br>showing service areas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-lg custom-shadow transform-gpu hover:scale-[1.01] transition-transform" data-scroll data-scroll-speed="0.5" data-tilt data-tilt-max="2">
+            <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+            <form id="contact-form">
+                <div class="mb-4 form-group">
+                    <label class="block text-gray-700 mb-2" for="contact-name">Full Name</label>
+                    <input type="text" id="contact-name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your name">
+                </div>
+                <div class="mb-4 form-group">
+                    <label class="block text-gray-700 mb-2" for="contact-email">Email Address</label>
+                    <input type="email" id="contact-email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your email">
+                </div>
+                <div class="mb-4 form-group">
+                    <label class="block text-gray-700 mb-2" for="contact-subject">Subject</label>
+                    <input type="text" id="contact-subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Message subject">
+                </div>
+                <div class="mb-6 form-group">
+                    <label class="block text-gray-700 mb-2" for="contact-message">Message</label>
+                    <textarea id="contact-message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Your message"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-primary text-white py-3 !rounded-button font-medium hover:bg-gray-900 transition-colors whitespace-nowrap ripple">Send Message</button>
+            </form>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white pt-16 pb-8" data-scroll-section>
+<div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div data-scroll data-scroll-speed="1">
+            <a href="#" class="text-3xl font-['Pacifico'] text-white mb-6 block hover:scale-105 transition-transform">KnockFit</a>
+            <p class="text-gray-400 mb-6">Premium home personal training services that bring fitness to your doorstep. No commute, just commit.</p>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors hover:scale-125 transform duration-300">
+                    <i class="ri-instagram-line ri-lg"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors hover:scale-125 transform duration-300">
+                    <i class="ri-facebook-line ri-lg"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors hover:scale-125 transform duration-300">
+                    <i class="ri-twitter-x-line ri-lg"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors hover:scale-125 transform duration-300">
+                    <i class="ri-youtube-line ri-lg"></i>
+                </a>
+            </div>
+        </div>
+        <div data-scroll data-scroll-speed="1.2">
+            <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+            <ul class="space-y-3">
+                <li><a href="#home" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Home</a></li>
+                <li><a href="#services" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Services</a></li>
+                <li><a href="#trainers" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Trainers</a></li>
+                <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Pricing</a></li>
+                <li><a href="#free-session" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Free Session</a></li>
+                <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Contact</a></li>
+            </ul>
+        </div>
+        <div data-scroll data-scroll-speed="1.4">
+            <h4 class="text-lg font-bold mb-6">Services</h4>
+            <ul class="space-y-3">
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Personal Training</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Nutrition Coaching</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Group Training</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Senior Fitness</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Prenatal Fitness</a></li>
+                <li><a href="#" class="text-gray-400 hover:text-white transition-colors hover:translate-x-1 transform block">Corporate Wellness</a></li>
+            </ul>
+        </div>
+        <div data-scroll data-scroll-speed="1.6">
+            <h4 class="text-lg font-bold mb-6">Newsletter</h4>
+            <p class="text-gray-400 mb-4">Subscribe to receive fitness tips, special offers, and updates.</p>
+            <form class="mb-4 relative">
+                <div class="flex">
+                    <input type="email" placeholder="Your email" class="px-4 py-3 w-full bg-gray-800 border-none text-white rounded-l focus:outline-none">
+                    <button type="submit" class="bg-primary text-white px-4 py-3 !rounded-r-button font-medium hover:bg-gray-700 transition-colors whitespace-nowrap ripple">Subscribe</button>
+                </div>
+                <div class="newsletter-success absolute -bottom-8 left-0 hidden w-full text-green-400 text-sm">
+                    <i class="ri-check-line"></i> You're now subscribed!
+                </div>
+            </form>
+            <p class="text-gray-500 text-sm">By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.</p>
+        </div>
+    </div>
+    <div class="pt-8 border-t border-gray-800 text-center text-gray-500">
+        <p>© 2025 KnockFit. All rights reserved.</p>
+        <div class="flex justify-center space-x-6 mt-4">
+            <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+        </div>
+    </div>
+</div>
+
+<!-- Back to top button -->
+<div class="fixed bottom-8 right-8 opacity-0 transition-opacity duration-300 z-30" id="back-to-top">
+    <button class="w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-800 transition-colors focus:outline-none">
+        <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+</div>
+</footer>
+
+<!-- Scripts -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Locomotive Scroll
+    const scroll = new LocomotiveScroll({
+        el: document.querySelector('[data-scroll-container]'),
+        smooth: true,
+        tablet: { smooth: true },
+        smartphone: { smooth: false }
+    });
+    
+    // Initialize Vanilla Tilt
+    VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
+        max: 5,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+    });
+
+    // Initialize Swiper
+    const testimonialSwiper = new Swiper('.testimonial-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        }
+    });
+    
+    // Navigation highlight on scroll
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('[data-scroll-section]');
+    
+    scroll.on('scroll', (instance) => {
+        const currentPosition = instance.scroll.y;
+        
+        // Progress bar
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (currentPosition / height) * 100;
+        document.querySelector('.progress-bar').style.width = scrolled + '%';
+        
+        // Show/hide back-to-top button
+        const backToTop = document.getElementById('back-to-top');
+        if (currentPosition > 300) {
+            backToTop.classList.add('opacity-100');
+            backToTop.classList.remove('opacity-0');
+        } else {
+            backToTop.classList.add('opacity-0');
+            backToTop.classList.remove('opacity-100');
+        }
+        
+        // Navigation highlight
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top + currentPosition;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            const id = section.getAttribute('id');
+            
+            if (currentPosition >= sectionTop - 200 && currentPosition < sectionBottom - 200) {
+                navLinks.forEach(link => {
+                    link.querySelector('span:last-child').style.width = '0';
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.querySelector('span:last-child').style.width = '100%';
+                    }
+                });
+            }
+        });
+        
+        // Animate progress bars when in view
+        const progressBars = document.querySelectorAll('.progress-animate');
+        progressBars.forEach(bar => {
+            const rect = bar.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                if (!bar.classList.contains('animated')) {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                    bar.classList.add('animated');
+                }
+            }
+        });
+    });
+    
+    // Back to top button
+    document.getElementById('back-to-top').addEventListener('click', () => {
+        scroll.scrollTo(0);
+    });
+    
+    // Split text animation
+    const splitText = document.querySelector('.split-text');
+    if (splitText) {
+        const text = splitText.textContent;
+        splitText.textContent = '';
+        
+        for (let i = 0; i < text.length; i++) {
+            const letter = document.createElement('span');
+            letter.className = 'letter';
+            letter.style.transitionDelay = `${i * 0.03}s`;
+            letter.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+            splitText.appendChild(letter);
+        }
+        
+        setTimeout(() => {
+            splitText.classList.add('reveal');
+        }, 500);
+    }
+
+    
+    // Initialize counters
+    function startCounters() {
+        const counterElements = document.querySelectorAll('.counter-value');
+        
+        counterElements.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const step = (target / duration) * 10;
+            
+            let current = 0;
+            const timer = setInterval(() => {
+                current += step;
+                if (current > target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = Math.floor(current);
+            }, 10);
+        });
+    }
+    
+    // Start counters when page loads
+    startCounters();
+    
+    // GSAP Integration
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // Reveal text animations
+    const revealTexts = document.querySelectorAll('.reveal-text');
+    revealTexts.forEach(text => {
+        gsap.from(text, {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: text,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            }
+        });
+    });
+    
+    // FAQ Toggles
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    faqToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector('.faq-icon');
+            
+            // Check if this FAQ is already open
+            const isOpen = !content.classList.contains('max-h-0');
+            
+            // Close all FAQs first
+            document.querySelectorAll('.faq-content').forEach(item => {
+                item.classList.add('max-h-0');
+                item.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.faq-icon').forEach(icon => {
+                icon.classList.remove('rotate-45');
+                icon.classList.replace('ri-subtract-line', 'ri-add-line');
+            });
+            
+            // Open the clicked FAQ if it wasn't already open
+            if (!isOpen) {
+                content.classList.remove('max-h-0');
+                content.classList.add('active');
+                icon.classList.add('rotate-45');
+                icon.classList.replace('ri-add-line', 'ri-subtract-line');
+            }
+        });
+    });
+    
+    // Pricing plan selector
+    const planSelectors = document.querySelectorAll('.plan-selector');
+    const planContainers = document.querySelectorAll('.plan-container');
+    
+    planSelectors.forEach((selector, index) => {
+        selector.addEventListener('click', () => {
+            // Update selector styles
+            planSelectors.forEach(s => {
+                s.classList.remove('bg-primary');
+                s.classList.add('text-gray-300');
+                s.classList.remove('text-white');
+            });
+            
+            selector.classList.add('bg-primary', 'text-white');
+            
+            // Show selected plan
+            planContainers.forEach(container => {
+                container.classList.add('hidden');
+            });
+            
+            planContainers[index].classList.remove('hidden');
+        });
+    });
+    
+    // Custom cursor
+    const cursor = document.querySelector('.custom-cursor');
+    if (cursor) {
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+        
+        document.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.background = 'rgba(0, 0, 0, 0.3)';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.background = 'rgba(0, 0, 0, 0.5)';
+            });
+        });
+    }
+    
+    // Mobile menu
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileOverlay = document.querySelector('.mobile-overlay');
+    const closeMenuButton = document.querySelector('.close-mobile-menu');
+    
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+    });
+    
+    closeMenuButton.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+    });
+    
+    mobileOverlay.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+    });
+    
+    // Mobile menu links
+    document.querySelectorAll('.mobile-menu a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+        });
+    });
+    
+    // Form validation and submission
+    document.getElementById('free-session-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = this;
+        const submitButton = document.getElementById('submit-button');
+        const submitText = submitButton.querySelector('.submit-text');
+        const loadingIndicator = submitButton.querySelector('.submit-loading');
+        const doneIndicator = submitButton.querySelector('.submit-done');
+        const successMessage = form.nextElementSibling;
+        
+        // Simple validation
+        let valid = true;
+        form.querySelectorAll('input, select').forEach(field => {
+            if (!field.value) {
+                valid = false;
+                field.classList.add('border-red-500');
+                field.closest('.form-group').querySelector('.error-message').classList.remove('hidden');
+            } else {
+                field.classList.remove('border-red-500');
+                field.closest('.form-group').querySelector('.error-message')?.classList.add('hidden');
+            }
+        });
+        
+        if (valid) {
+            // Show loading state
+            submitText.classList.add('hidden');
+            loadingIndicator.classList.remove('hidden');
+            
+            // Simulate form submission
+            setTimeout(() => {
+                loadingIndicator.classList.add('hidden');
+                doneIndicator.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    form.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                    
+                    // Reset for demo purposes
+                    setTimeout(() => {
+                        form.reset();
+                        form.classList.remove('hidden');
+                        successMessage.classList.add('hidden');
+                        doneIndicator.classList.add('hidden');
+                        submitText.classList.remove('hidden');
+                    }, 5000);
+                }, 1000);
+            }, 1500);
+        }
+    });
+    
+    // Contact form
+    document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Message sent successfully! We will respond within 24 hours.');
+        this.reset();
+    });
+    
+    // Newsletter subscription
+    const newsletterForm = document.querySelector('form:not(#free-session-form):not(#contact-form)');
+    const newsletterSuccess = document.querySelector('.newsletter-success');
+    
+    newsletterForm?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        newsletterSuccess.classList.remove('hidden');
+        this.querySelector('input').value = '';
+        
+        setTimeout(() => {
+            newsletterSuccess.classList.add('hidden');
+        }, 3000);
+    });
+    
+    // Magnetic buttons
+    const magneticButtons = document.querySelectorAll('.magnetic-button');
+    
+    magneticButtons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = '';
+        });
+    });
+    
+    // Initialize Locomotive Scroll
+    scroll.update();
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the device is iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+    // Initialize Locomotive Scroll if not on iOS
+    if (!isIOS) {
+        const scroll = new LocomotiveScroll({
+            el: document.querySelector('[data-scroll-container]'),
+            smooth: true,
+            tablet: { smooth: true },
+            smartphone: { smooth: false }
+        });
+
+        // Update Locomotive Scroll on window resize
+        window.addEventListener('resize', () => {
+            scroll.update();
+        });
+    }
+
+    // Initialize Vanilla Tilt
+    VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
+        max: 5,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+    });
+
+    // Initialize Swiper
+    const testimonialSwiper = new Swiper('.testimonial-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+        }
+    });
+
+    // Navigation highlight on scroll
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('[data-scroll-section]');
+
+    window.addEventListener('scroll', () => {
+        const currentPosition = window.scrollY;
+
+        // Progress bar
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (currentPosition / height) * 100;
+        document.querySelector('.progress-bar').style.width = scrolled + '%';
+
+        // Show/hide back-to-top button
+        const backToTop = document.getElementById('back-to-top');
+        if (currentPosition > 300) {
+            backToTop.classList.add('opacity-100');
+            backToTop.classList.remove('opacity-0');
+        } else {
+            backToTop.classList.add('opacity-0');
+            backToTop.classList.remove('opacity-100');
+        }
+
+        // Navigation highlight
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top + currentPosition;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            const id = section.getAttribute('id');
+
+            if (currentPosition >= sectionTop - 200 && currentPosition < sectionBottom - 200) {
+                navLinks.forEach(link => {
+                    link.querySelector('span:last-child').style.width = '0';
+                    if (link.getAttribute('href') === '#' + id) {
+                        link.querySelector('span:last-child').style.width = '100%';
+                    }
+                });
+            }
+        });
+
+        // Animate progress bars when in view
+        const progressBars = document.querySelectorAll('.progress-animate');
+        progressBars.forEach(bar => {
+            const rect = bar.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                if (!bar.classList.contains('animated')) {
+                    const width = bar.getAttribute('data-width');
+                    bar.style.width = width;
+                    bar.classList.add('animated');
+                }
+            }
+        });
+    });
+
+    // Back to top button
+    document.getElementById('back-to-top').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Split text animation
+    const splitText = document.querySelector('.split-text');
+    if (splitText) {
+        const text = splitText.textContent;
+        splitText.textContent = '';
+
+        for (let i = 0; i < text.length; i++) {
+            const letter = document.createElement('span');
+            letter.className = 'letter';
+            letter.style.transitionDelay = `${i * 0.03}s`;
+            letter.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+            splitText.appendChild(letter);
+        }
+
+        setTimeout(() => {
+            splitText.classList.add('reveal');
+        }, 500);
+    }
+
+    // Initialize counters
+    function startCounters() {
+        const counterElements = document.querySelectorAll('.counter-value');
+
+        counterElements.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const step = (target / duration) * 10;
+
+            let current = 0;
+            const timer = setInterval(() => {
+                current += step;
+                if (current > target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counter.textContent = Math.floor(current);
+            }, 10);
+        });
+    }
+
+    // Start counters when page loads
+    startCounters();
+
+    // GSAP Integration
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Reveal text animations
+    const revealTexts = document.querySelectorAll('.reveal-text');
+    revealTexts.forEach(text => {
+        gsap.from(text, {
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            scrollTrigger: {
+                trigger: text,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            }
+        });
+    });
+
+    // FAQ Toggles
+    const faqToggles = document.querySelectorAll('.faq-toggle');
+    faqToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const icon = this.querySelector('.faq-icon');
+
+            // Check if this FAQ is already open
+            const isOpen = !content.classList.contains('max-h-0');
+
+            // Close all FAQs first
+            document.querySelectorAll('.faq-content').forEach(item => {
+                item.classList.add('max-h-0');
+                item.classList.remove('active');
+            });
+
+            document.querySelectorAll('.faq-icon').forEach(icon => {
+                icon.classList.remove('rotate-45');
+                icon.classList.replace('ri-subtract-line', 'ri-add-line');
+            });
+
+            // Open the clicked FAQ if it wasn't already open
+            if (!isOpen) {
+                content.classList.remove('max-h-0');
+                content.classList.add('active');
+                icon.classList.add('rotate-45');
+                icon.classList.replace('ri-add-line', 'ri-subtract-line');
+            }
+        });
+    });
+
+    // Pricing plan selector
+    const planSelectors = document.querySelectorAll('.plan-selector');
+    const planContainers = document.querySelectorAll('.plan-container');
+
+    planSelectors.forEach((selector, index) => {
+        selector.addEventListener('click', () => {
+            // Update selector styles
+            planSelectors.forEach(s => {
+                s.classList.remove('bg-primary');
+                s.classList.add('text-gray-300');
+                s.classList.remove('text-white');
+            });
+
+            selector.classList.add('bg-primary', 'text-white');
+
+            // Show selected plan
+            planContainers.forEach(container => {
+                container.classList.add('hidden');
+            });
+
+            planContainers[index].classList.remove('hidden');
+        });
+    });
+
+    // Custom cursor
+    const cursor = document.querySelector('.custom-cursor');
+    if (cursor && !isIOS) {
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        document.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.background = 'rgba(0, 0, 0, 0.3)';
+            });
+
+            element.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.background = 'rgba(0, 0, 0, 0.5)';
+            });
+        });
+    }
+
+    // Mobile menu
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileOverlay = document.querySelector('.mobile-overlay');
+    const closeMenuButton = document.querySelector('.close-mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileOverlay.classList.toggle('active');
+    });
+
+    closeMenuButton.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+    });
+
+    mobileOverlay.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+    });
+
+    // Mobile menu links
+    document.querySelectorAll('.mobile-menu a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+        });
+    });
+
+    // Form validation and submission
+    document.getElementById('free-session-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const form = this;
+        const submitButton = document
+});
+</script>
+</body>
+</html>
